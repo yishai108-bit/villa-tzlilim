@@ -126,6 +126,59 @@ body.menu .rooms { display: flex; }
 .gal .arrows { display: none; }
 @media (hover: hover) { .gal .arrows { display: flex; gap: 10px; } }
 
+
+/* v6: intro, room facts, level strip, yard finale, end card, zoomable full-quality photos */
+.cap .facts { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.cap .facts span { font: 600 12.5px/1 var(--body); color: var(--sand); background: rgba(243,234,217,.14); padding: 5px 8px; border-radius: 999px; }
+/* after a few seconds in a room the caption folds to its title, so the house stays in view */
+.cap .facts, .cap p { transition: opacity .5s ease, max-height .5s ease; max-height: 120px; overflow: hidden; }
+.cap.mini p, .cap.mini .facts { opacity: 0; max-height: 0; margin: 0; }
+body.ended .walk, body.ended .bottom { opacity: 0; pointer-events: none; }
+body.intro .top, body.intro .cap, body.intro .walk, body.intro .bottom, body.intro .hint { opacity: 0; pointer-events: none; }
+.top, .walk, .bottom { transition: opacity .6s ease; }
+
+.intro { position: fixed; z-index: 8; inset: 0; display: grid; place-items: end center; padding: 0 16px calc(24px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(to top, rgba(18,14,11,.94) 30%, rgba(18,14,11,.35) 70%, rgba(18,14,11,.15)); transition: opacity .7s ease; }
+.intro.off { opacity: 0; pointer-events: none; }
+.intro .box { width: 100%; max-width: 420px; display: grid; gap: 14px; text-align: center; }
+.intro .kick { font: 600 13px/1 var(--body); color: var(--clay); letter-spacing: .12em; }
+.intro h2 { margin: 0; font: 500 38px/1.05 var(--display); }
+.intro p { margin: 0; color: var(--dune); font-size: 16px; line-height: 1.45; }
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.chips span { font: 600 13.5px/1 var(--body); background: rgba(243,234,217,.13); padding: 7px 10px; border-radius: 999px; }
+.big { border: 0; border-radius: 14px; padding: 16px 18px; font: 700 18px/1 var(--body); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+.big.light { background: var(--sand); color: var(--ink); }
+.big.ghost { background: rgba(243,234,217,.1); color: var(--sand); font-size: 16px; padding: 13px 16px; }
+.big svg { width: 22px; height: 22px; }
+
+#yard { position: fixed; inset: 0 var(--side) 0 0; z-index: 1; background: var(--ink); overflow: hidden; opacity: 0; pointer-events: none; transition: opacity .9s ease; }
+#yard.on { opacity: 1; pointer-events: auto; }
+#yard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; will-change: transform, opacity; }
+#yard img.show { opacity: 1; }
+@keyframes kbA { from { transform: scale(1.04) translateX(3%); } to { transform: scale(1.16) translateX(-3%); } }
+@keyframes kbB { from { transform: scale(1.16) translateX(-3%); } to { transform: scale(1.04) translateX(3%); } }
+#yard img.kA { animation: kbA 7s linear forwards; }
+#yard img.kB { animation: kbB 7s linear forwards; }
+
+.end { position: fixed; z-index: 3; inset: 0 var(--side) 0 0; display: grid; place-items: center; padding: 16px; background: rgba(18,14,11,.72); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+.end.on { opacity: 1; pointer-events: auto; }
+.end .box { width: 100%; max-width: 400px; display: grid; gap: 12px; text-align: center; }
+.end h2 { margin: 0; font: 500 32px/1.1 var(--display); }
+.end p { margin: 0 0 4px; color: var(--dune); font-size: 15.5px; line-height: 1.45; }
+.end .wa { max-width: none; }
+
+.sheet { grid-auto-rows: max-content; }
+.sheet .ph { display: flex; gap: 6px; overflow-x: auto; padding: 2px 6px 8px 6px; scrollbar-width: none; }
+.sheet .ph::-webkit-scrollbar { display: none; }
+.sheet .ph button { flex: 0 0 auto; border: 0; padding: 0; background: #2a221c; border-radius: 6px; cursor: zoom-in; }
+.sheet .ph img { width: 92px; height: 62px; object-fit: cover; border-radius: 6px; display: block; }
+.sheet .share { margin: 16px 4px 0; }
+
+.strip figure.z { overflow: auto; place-items: start; scroll-snap-align: none; touch-action: pan-x pan-y; }
+.strip figure.z img { max-width: none; max-height: none; width: 260%; cursor: zoom-out; }
+.strip img { cursor: zoom-in; transition: filter .3s; }
+.strip img.lo { filter: blur(.6px); }
+.gal .tip { color: var(--dune); font-size: 13px; }
+
 @media (min-width: 760px) {
   .brand { font-size: 24px; }
   .cap h1 { font-size: 28px; }
@@ -149,7 +202,7 @@ body.menu .rooms { display: flex; }
 @media (prefers-reduced-motion: reduce) { .hint, .cap { transition: none; } #stage video { transition: none; } }
 </style>
 </head>
-<body>
+<body class="intro">
 
 <div id="stage" aria-label="סרטון הליכה בבית. לחיצה עוצרת וממשיכה, החלקה למעלה עוברת לחדר הבא.">
   <video id="v" playsinline muted preload="auto"></video>
@@ -163,9 +216,10 @@ body.menu .rooms { display: flex; }
   <button class="btn" id="menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 12h9M12 3v13M12 16h9"/></svg>חדרים</button>
 </div>
 
-<div class="cap" id="cap" aria-live="polite"><div class="where" id="where"></div><h1 id="room"></h1><p id="line"></p></div>
+<div id="yard" aria-hidden="true"></div>
+<div class="cap" id="cap" aria-live="polite"><div class="where" id="where"></div><h1 id="room"></h1><p id="line"></p><div class="facts" id="facts"></div></div>
 
-<div class="hint" id="hint">הסיור הולך לבד.<br>לחיצה עוצרת וממשיכה, החלקה למעלה מדלגת לחדר הבא, ולחיצה ארוכה מזרזת.</div>
+<div class="hint off" id="hint">לחיצה עוצרת וממשיכה.<br>החלקה למעלה מדלגת לחדר הבא, ולחיצה ארוכה מזרזת.</div>
 
 <div class="walk">
   <div class="bar" id="bar" role="slider" tabindex="0" aria-label="מיקום בסיור" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="track"></div><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
@@ -183,8 +237,29 @@ body.menu .rooms { display: flex; }
 <div class="bottom">
   <a class="wa" id="wa" href="#" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/></svg>
-    לתיאום בוואטסאפ
+    לפרטים וזמינות בוואטסאפ
   </a>
+</div>
+
+<div class="intro" id="intro">
+  <div class="box">
+    <div class="kick">ירוחם, בין המכתש לאגם</div>
+    <h2>וילת צלילים</h2>
+    <p>סיור בבית, חדר אחרי חדר, כאילו אתם כבר שם.</p>
+    <div class="chips"><span>5 חדרי שינה</span><span>4 חדרי רחצה</span><span>עד 20 אורחים</span><span>סוויטה עם כניסה נפרדת</span><span>חצר ופרגולה</span><span>חיות מחמד בלי תוספת</span></div>
+    <button class="big light" id="start" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>להתחיל את הסיור</button>
+    <button class="big ghost" id="introRooms" type="button">לראות את החדרים והתמונות</button>
+  </div>
+</div>
+
+<div class="end" id="end">
+  <div class="box">
+    <h2>זה הבית.</h2>
+    <p>הבית כולו רק שלכם, כולל הסוויטה.<br>צ'ק-אין מ-15:00, צ'ק-אאוט עד 11:00.</p>
+    <a class="wa" id="wa2" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>לפרטים וזמינות בוואטסאפ</a>
+    <button class="big ghost" id="share2" type="button">לשלוח את הסיור לחברים</button>
+    <button class="big ghost" id="again" type="button">לסייר שוב</button>
+  </div>
 </div>
 
 <div class="rooms" id="rooms" role="dialog" aria-label="חדרים">
@@ -196,40 +271,44 @@ body.menu .rooms { display: flex; }
 <div class="gal" id="gal" role="dialog" aria-label="תמונות החדר">
   <header><div><b id="galName"></b><small id="galN"></small></div><button class="btn" id="galClose" aria-label="סגירה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
   <div class="strip" id="strip"></div>
-  <footer><div class="arrows"><button class="btn" id="galPrev" aria-label="התמונה הקודמת"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="btn" id="galNext" aria-label="התמונה הבאה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button></div></footer>
+  <footer><span class="tip" id="galTip">לחיצה כפולה מגדילה</span><div class="arrows"><button class="btn" id="galPrev" aria-label="התמונה הקודמת"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button><button class="btn" id="galNext" aria-label="התמונה הבאה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button></div></footer>
 </div>
 
 <script>
 document.documentElement.lang = 'he'; document.documentElement.dir = 'rtl';
 // Phone from the villa's Google card. Change here if needed.
 var WHATSAPP_PHONE = "972525257701";
-var WHATSAPP_TEXT = "היי, ראיתי את הסיור בוילת צלילים ואשמח לתאם";
+var WHATSAPP_TEXT = "היי, ראיתי את הסיור בוילת צלילים ואשמח לפרטים וזמינות";
+// Full-size photos (same numbers as img/). On the site the tour sits at /tour/ and the originals at /img/o/.
+var ORIG = "../img/o/";
+// The yard has no video: the tour ends there with these photos, slowly moving, then the end card.
+var YARD = [["85", 15], ["86", 15], ["84", 15], ["87", 16], ["83", 16], ["82", 16]];
 
 // Video files: "hi" for tablets and computers, "lo" for phones. Seconds are at normal walking speed.
-var SRC = {"hi": "video/tour-1080.mp4", "lo": "video/tour-720.mp4", "poster": "video/poster.jpg", "thumbs": "video/th/", "img": "img/", "dur": 153.6};
+var SRC = {"hi": "video/tour-1080.mp4", "lo": "video/tour-720.mp4", "poster": "video/poster.jpg", "thumbs": "video/th/", "img": "img/", "dur": 153.36};
 
 // Rooms for the list and the captions. "at" is where in the video the room is best seen (null: photos only).
 var ROOMS = [
-  { sec: "הכניסה", name: "הרחוב והכניסה", at: 1.0, line: "הבית מהרחוב, החצר הקדמית ודלת הכניסה.", photos: ["74", "73"] },
-  { sec: "הבית", name: "הסלון", at: 10.0, line: "סלון גדול ומואר, עם ספה, כורסאות וספריה צהובה.", photos: ["06", "07", "04", "03", "01"] },
-  { name: "פינת האוכל", at: 15.0, line: "שולחן עץ ארוך עם כיסאות צהובים, ליד חלון.", photos: ["24", "02", "16"] },
-  { name: "המטבח", at: 20.0, line: "מטבח לבן ומרווח, עם פתח אל הסלון ופינת קפה.", photos: ["10", "12", "15", "13", "14"] },
-  { name: "המסדרון ושירותי האורחים", at: 44.0, line: "מסדרון עם כיור ושירותי אורחים, ליד הסלון.", photos: ["23", "22"] },
-  { name: "המדרגות", at: 52.0, line: "מדרגות לבנות אל הקומה העליונה, ומדרגות עץ אל המפלס התחתון.", photos: ["19"] },
-  { sec: "המפלס התחתון", name: "פינת הטלוויזיה", at: 57.0, line: "פינת ישיבה נוספת במפלס התחתון, עם ספה, טלוויזיה ומכשיר כושר.", photos: ["09", "50", "49", "51"] },
-  { name: "חדר ילדים", at: 63.0, line: "מיטה זוגית ממתכת לבנה ומיטת קומתיים.", photos: ["46", "47", "45"] },
-  { name: "חדר שינה זוגי", at: 75.0, line: "חדר שינה זוגי עם וילונות לכל גובה הקיר, ארון מראה וחדר רחצה צמוד.", photos: ["52", "54"] },
-  { name: "חדר הרחצה הצמוד", at: 80.0, line: "מקלחת וכיור, עם רצפה בצבע טורקיז.", photos: ["55", "56"] },
-  { name: "חדר רחצה עם אמבטיה", at: 88.0, line: "אמבטיה, מקלחת וכיור, עם רצפה סגולה.", photos: ["61", "59"] },
-  { name: "חדר שינה נוסף", at: 95.0, line: "חדר שינה זוגי עם ספה כחולה ודלת אל החצר.", photos: ["57", "58"] },
+  { sec: "הכניסה", name: "הרחוב והכניסה", facts: ["כל הבית רק שלכם", "חניה חינם"], at: 1.0, line: "הבית מהרחוב, החצר הקדמית ודלת הכניסה.", photos: ["74", "73"] },
+  { sec: "הבית", name: "הסלון", facts: ["מיזוג וחימום", "טלוויזיה", "WiFi חינם"], at: 10.0, line: "סלון גדול ומואר, עם ספה, כורסאות וספריה צהובה.", photos: ["06", "07", "04", "03", "01"] },
+  { name: "פינת האוכל", facts: ["שולחן לכל החבורה"], at: 15.0, line: "שולחן עץ ארוך עם כיסאות צהובים, ליד חלון.", photos: ["24", "02", "16"] },
+  { name: "המטבח", facts: ["מדיח כלים", "תנור וכיריים", "מכונת קפה", "כיסא אוכל לתינוק"], at: 20.0, line: "מטבח לבן ומרווח, עם פתח אל הסלון ופינת קפה.", photos: ["10", "12", "15", "13", "14"] },
+  { name: "המסדרון ושירותי האורחים", facts: ["שירותי אורחים"], at: 44.0, line: "מסדרון עם כיור ושירותי אורחים, ליד הסלון.", photos: ["23", "22"] },
+  { name: "המדרגות", facts: ["למעלה ולמטה"], at: 52.0, line: "מדרגות לבנות אל הקומה העליונה, ומדרגות עץ אל המפלס התחתון.", photos: ["19"] },
+  { sec: "המפלס התחתון", name: "פינת הטלוויזיה", facts: ["טלוויזיה", "פינת ישיבה"], at: 57.0, line: "פינת ישיבה נוספת במפלס התחתון, עם ספה וטלוויזיה.", photos: ["09", "50", "49", "51"] },
+  { name: "חדר ילדים", facts: ["מיטה זוגית", "מיטת קומתיים"], at: 63.0, line: "מיטה זוגית ממתכת לבנה ומיטת קומתיים.", photos: ["46", "47", "45"] },
+  { name: "חדר שינה זוגי", facts: ["יחידת הורים", "חדר רחצה צמוד"], at: 75.0, line: "חדר שינה זוגי עם וילונות לכל גובה הקיר, ארון מראה וחדר רחצה צמוד.", photos: ["52", "54"] },
+  { name: "חדר הרחצה הצמוד", facts: ["מקלחון", "מגבות"], at: 80.0, line: "מקלחת וכיור, עם רצפה בצבע טורקיז.", photos: ["55", "56"] },
+  { name: "חדר רחצה עם אמבטיה", facts: ["אמבטיה", "מקלחון"], at: 88.0, line: "אמבטיה, מקלחת וכיור, עם רצפה סגולה.", photos: ["61", "59"] },
+  { name: "חדר שינה נוסף", facts: ["מיטה זוגית", "יציאה לחצר"], at: 95.0, line: "חדר שינה זוגי עם ספה כחולה ודלת אל החצר.", photos: ["57", "58"] },
   { sec: "הקומה העליונה", name: "המסדרון העליון", at: 107.0, line: "מסדרון עליון עם קיר בלוקים מעוטר, ומבט אל הסלון למטה.", photos: ["43", "44"] },
-  { name: "חדר רחצה, למעלה", at: 110.0, line: "מקלחת, כיור ושירותים, עם רצפה אדומה.", photos: ["40", "41"] },
-  { name: "חדר ילדים, למעלה", at: 113.0, line: "מיטה זוגית, מיטת קומתיים וארונות, מתחת לתקרת קורות.", photos: ["37", "39"] },
-  { sec: "החצר", name: "הפרגולה", at: null, line: "פרגולה גדולה עם שולחן אוכל, פינת ישיבה, שולחן פינג פונג וערסל.", photos: ["85", "86", "84"] },
-  { name: "הגינה", at: null, line: "דשא, פינת ישיבה, נדנדה וערסל בצל העצים.", photos: ["87", "83", "82"] },
-  { sec: "סוויטת צליל", name: "המדרגות לסוויטה", at: 121.0, line: "מהחצר הקדמית, מדרגות עץ עולות לסוויטה.", photos: ["76"] },
-  { name: "החצר של הסוויטה", at: 125.0, line: "חצר פרטית עם כיסא תלוי ושולחן קטן. הסוויטה נכללת כשמזמינים את הווילה כולה.", photos: ["79", "78", "77", "80"] },
-  { name: "הסוויטה", at: 132.0, line: "יחידה נפרדת עם מיטה זוגית, פינת ישיבה, מטבחון ומקלחת.", photos: ["26", "27", "30", "29", "28", "35", "32", "36"] }
+  { name: "חדר רחצה, למעלה", facts: ["מקלחון"], at: 110.0, line: "מקלחת, כיור ושירותים, עם רצפה אדומה.", photos: ["40", "41"] },
+  { name: "חדר ילדים, למעלה", facts: ["מיטה זוגית", "מיטת קומתיים"], at: 113.0, line: "מיטה זוגית, מיטת קומתיים וארונות, מתחת לתקרת קורות.", photos: ["37", "39"] },
+  { sec: "החצר", name: "הפרגולה", facts: ["פינת אוכל בחוץ", "פינג פונג", "ערסל"], at: null, line: "פרגולה גדולה עם שולחן אוכל, פינת ישיבה, שולחן פינג פונג וערסל.", photos: ["85", "86", "84"] },
+  { name: "הגינה", facts: ["דשא", "נדנדה"], at: null, line: "דשא, פינת ישיבה, נדנדה וערסל בצל העצים.", photos: ["87", "83", "82"] },
+  { sec: "סוויטת צליל", name: "המדרגות לסוויטה", facts: ["כניסה נפרדת"], at: 121.0, line: "מהחצר הקדמית, מדרגות עץ עולות לסוויטה.", photos: ["76"] },
+  { name: "החצר של הסוויטה", facts: ["כיסא תלוי", "פינת ישיבה"], at: 125.0, line: "חצר פרטית עם כיסא תלוי ושולחן קטן. הסוויטה נכללת כשמזמינים את הווילה כולה.", photos: ["79", "78", "77", "80"] },
+  { name: "הסוויטה", facts: ["מטבחון", "מכונת קפה", "מיטת ספה"], at: 132.0, line: "יחידה נפרדת עם מיטה זוגית, פינת ישיבה, מטבחון ומקלחת.", photos: ["26", "27", "30", "29", "28", "35", "32", "36"] }
 ];
 // Where the walk is at each second: [start second, room index, optional caption override]
 var SEGS = [
@@ -283,16 +362,18 @@ var SEGS = [
     ui(); if (!auto) hideHint();
   }
   function stopWalk() { if (!walking) return; walking = false; v.pause(); pos = v.currentTime; ui(); }
-  function toggleWalk() { if (walking) stopWalk(); else startWalk(false); }
-  v.addEventListener('ended', function () { walking = false; pos = DUR; ui(); });
+  function toggleWalk() { if (yardIdx >= 0) { if (yardOn) { yardPause(); ui(); } else if (endCard.classList.contains('on')) { endOff(); yardStop(); jump(0.01, true); } else yardPlay(); return; } if (walking) stopWalk(); else startWalk(false); }
+  v.addEventListener('ended', function () { walking = false; pos = DUR; ui(); if (introOff) yardStart(0); else { v.currentTime = 0; v.play(); } });
   v.addEventListener('pause', function () { if (walking && !v.seeking && !v.ended) { walking = false; ui(); } });
+  var introOff = false, shownRoom = -1, miniT = null;
   // start walking as soon as the first frames are in
-  v.addEventListener('canplay', function once() { v.removeEventListener('canplay', once); if (!started) startWalk(true); });
+  v.addEventListener('canplay', function once() { v.removeEventListener('canplay', once); if (!started && !introOff) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } });
   document.addEventListener('visibilitychange', function () { if (document.hidden) stopWalk(); });
 
   // move to a room with a soft fade, keep walking if we were walking
-  function jump(t) {
-    hideHint(); var resume = walking; stopWalk();
+  function jump(t, go) {
+    if (yardIdx >= 0) yardStop();
+    hideHint(); var resume = walking || go; stopWalk();
     if (reduce) { seek(t); if (resume) startWalk(false); return; }
     stage.classList.add('fade');
     var done = false;
@@ -302,8 +383,8 @@ var SEGS = [
   // the next stop is the next room on the route, never a later view of the room we are already in
   function nextStop() { var cur = SEGS[segAt(pos)][1]; for (var i = 0; i < STOPS.length; i++) if (STOPS[i].at > pos + 0.75 && STOPS[i].i !== cur) return STOPS[i]; return null; }
   function prevStop() { for (var i = STOPS.length - 1; i >= 0; i--) if (STOPS[i].at < pos - 2.5) return STOPS[i]; return null; }
-  function goNext() { var s = nextStop(); if (s) jump(s.at); }
-  function goPrev() { var s = prevStop(); if (s) jump(s.at); else jump(0); }
+  function goNext() { if (yardIdx >= 0) { yardStep(); return; } var s = nextStop(); if (s) jump(s.at); else yardStart(0); }
+  function goPrev() { if (yardIdx >= 0) { if (yardIdx > 0) { yardShow(yardIdx - 1); yardPlay(); } else { yardStop(); jump(STOPS[STOPS.length - 1].at); } return; } var s = prevStop(); if (s) jump(s.at); else jump(0); }
   nextBtn.addEventListener('click', goNext);
   prevBtn.addEventListener('click', goPrev);
   goBtn.addEventListener('click', toggleWalk);
@@ -351,7 +432,7 @@ var SEGS = [
   }
   function barSeek(e) { var r = bar.getBoundingClientRect(); seek((r.right - e.clientX) / r.width * DUR); }
   var barDown = false, barResume = false;
-  bar.addEventListener('pointerdown', function (e) { barDown = true; barResume = walking; stopWalk(); hideHint(); barSeek(e); if (bar.setPointerCapture) { try { bar.setPointerCapture(e.pointerId); } catch (x) {} } });
+  bar.addEventListener('pointerdown', function (e) { if (yardIdx >= 0) yardStop(); barDown = true; barResume = walking; stopWalk(); hideHint(); barSeek(e); if (bar.setPointerCapture) { try { bar.setPointerCapture(e.pointerId); } catch (x) {} } });
   bar.addEventListener('pointermove', function (e) { if (barDown) barSeek(e); });
   function barUp() { if (!barDown) return; barDown = false; if (barResume) startWalk(false); }
   bar.addEventListener('pointerup', barUp); bar.addEventListener('pointercancel', barUp);
@@ -364,22 +445,25 @@ var SEGS = [
     document.getElementById('where').textContent = section(ri);
     document.getElementById('room').textContent = SEGS[i][2] || r.name;
     document.getElementById('line').textContent = r.line;
+    var fx = document.getElementById('facts'); fx.innerHTML = ''; (r.facts || []).forEach(function (t) { var s = document.createElement('span'); s.textContent = t; fx.appendChild(s); });
+    if (ri !== shownRoom) { shownRoom = ri; cap.classList.remove('mini'); clearTimeout(miniT); miniT = setTimeout(function () { cap.classList.add('mini'); }, 5500); }
+    if (introOff && history.replaceState) { try { history.replaceState(null, '', '#r' + ri); } catch (x) {} }
     if (ri !== curRoom) { curRoom = ri; [].forEach.call(document.querySelectorAll('.rooms .r'), function (b) { b.setAttribute('aria-current', b.dataset.room == ri ? 'true' : 'false'); }); }
     photosBtn.hidden = !r.photos.length; photosN.textContent = r.photos.length > 1 ? r.photos.length + ' תמונות' : 'תמונה';
   }
   function ui(force) {
     var i = segAt(pos);
-    if (i !== curSeg || force) {
+    if (yardIdx < 0 && (i !== curSeg || force)) {
       curSeg = i; clearTimeout(capT);
       if (force || reduce) { setCaption(i); cap.classList.remove('swap'); }
       else { cap.classList.add('swap'); capT = setTimeout(function () { setCaption(i); cap.classList.remove('swap'); }, 180); }
     }
     var f = pos / DUR * 100; fill.style.width = f + '%'; knob.style.right = f + '%'; bar.setAttribute('aria-valuenow', Math.round(f));
-    var ended = !walking && pos >= DUR - 0.2;
-    goBtn.classList.toggle('on', walking);
-    icWalk.hidden = walking || ended; icPause.hidden = !walking; icAgain.hidden = !ended;
+    var moving = walking || yardOn, ended = !moving && (endCard.classList.contains('on') || (pos >= DUR - 0.2 && yardIdx < 0));
+    goBtn.classList.toggle('on', moving);
+    icWalk.toggleAttribute('hidden', moving || ended); icPause.toggleAttribute('hidden', !moving); icAgain.toggleAttribute('hidden', !ended);
     goBtn.setAttribute('aria-label', walking ? 'לעצור' : (ended ? 'מההתחלה' : 'ללכת'));
-    nextBtn.disabled = !nextStop(); prevBtn.disabled = pos < 0.75;
+    nextBtn.disabled = yardIdx >= 0 && yardIdx === YARD.length - 1 && !yardOn && endCard.classList.contains('on'); prevBtn.disabled = pos < 0.75 && yardIdx < 0;
   }
 
   function hideHint() { hint.classList.add('off'); }
@@ -394,11 +478,15 @@ var SEGS = [
     var sp = document.createElement('span'); var n = document.createElement('b'); n.textContent = r.name; var s = document.createElement('small');
     s.textContent = r.at === null ? 'תמונות בלבד, ' + r.photos.length : (r.photos.length ? r.photos.length + ' תמונות' : '');
     sp.appendChild(n); sp.appendChild(s); b.appendChild(img); b.appendChild(sp);
-    b.addEventListener('click', function () { closeRooms(); if (r.at === null) openGal(i); else jump(r.at); });
+    b.addEventListener('click', function () { closeRooms(); goRoom(i); });
     sheet.appendChild(b);
+    if (r.photos.length) { var row = document.createElement('div'); row.className = 'ph';
+      r.photos.forEach(function (p, k) { var pb = document.createElement('button'); pb.type = 'button'; pb.setAttribute('aria-label', r.name + ', תמונה ' + (k + 1)); var im = new Image(); im.alt = ''; im.loading = 'lazy'; im.src = SRC.img + p + '.webp'; pb.appendChild(im); pb.addEventListener('click', function () { openGal(i, k); }); row.appendChild(pb); });
+      sheet.appendChild(row); }
   });
-  var note = document.createElement('p'); note.className = 'note'; note.textContent = 'הסרטון עובר בכל החדרים לפי הסדר. לחיצה עוצרת וממשיכה, החלקה או הכפתורים מדלגים בין חדרים, ולכל חדר יש את התמונות שלו.';
+  var note = document.createElement('p'); note.className = 'note'; note.textContent = 'הסיור עובר בכל החדרים לפי הסדר ומסתיים בחצר. לחיצה על שם החדר מעבירה אליו, ולחיצה על תמונה פותחת אותה בגודל מלא.';
   sheet.appendChild(note);
+  var shareBtn = document.createElement('button'); shareBtn.type = 'button'; shareBtn.className = 'big ghost share'; shareBtn.textContent = 'לשלוח את הסיור לחברים'; sheet.appendChild(shareBtn); shareBtn.addEventListener('click', share);
   function closeRooms() { document.body.classList.remove('menu'); }
   document.getElementById('menu').addEventListener('click', function () { document.body.classList.add('menu'); hideHint(); });
   document.getElementById('close').addEventListener('click', closeRooms);
@@ -407,28 +495,83 @@ var SEGS = [
   // photo gallery of the current room
   var gal = document.getElementById('gal'), strip = document.getElementById('strip'), galN = document.getElementById('galN');
   var galCount = 0, galResume = false;
-  function openGal(i) {
-    var r = ROOMS[i]; galResume = walking; stopWalk();
+  function openGal(i, at) {
+    var r = ROOMS[i]; galResume = walking || yardOn; stopWalk(); yardPause();
     document.getElementById('galName').textContent = r.name;
     strip.innerHTML = '';
     r.photos.forEach(function (p, k) {
-      var f = document.createElement('figure'); var img = new Image(); img.alt = r.name + ', תמונה ' + (k + 1); img.decoding = 'async'; img.loading = k < 2 ? 'eager' : 'lazy'; img.src = SRC.img + p + '.webp';
+      var f = document.createElement('figure'); var img = new Image(); img.alt = r.name + ', תמונה ' + (k + 1); img.decoding = 'async'; img.loading = 'eager'; img.src = SRC.img + p + '.webp';
+      if (Math.abs(k - (at || 0)) < 2) sharp(img, p); else img.dataset.p = p;
+      img.addEventListener('dblclick', function () { zoom(f, img, p); });
+      var lastTap = 0; img.addEventListener('touchend', function (e) { var n = Date.now(); if (n - lastTap < 300) { e.preventDefault(); zoom(f, img, p); } lastTap = n; });
       f.appendChild(img); strip.appendChild(f);
     });
-    galCount = r.photos.length; strip.scrollLeft = 0; galIndex(0);
-    gal.classList.add('open');
+    galCount = r.photos.length; gal.classList.add('open'); strip.scrollLeft = -(at || 0) * strip.clientWidth; galIndex(at || 0);
   }
-  function galIndex(k) { galN.textContent = galCount > 1 ? (k + 1) + ' / ' + galCount : ''; }
+  function galIndex(k) { galN.textContent = galCount > 1 ? (k + 1) + ' / ' + galCount : '';
+    [].forEach.call(strip.querySelectorAll('img'), function (im, j) { if (Math.abs(j - k) < 2 && im.dataset.p) { sharp(im, im.dataset.p); delete im.dataset.p; } }); }
+  // swap the light preview for the photographer's full-size file once it has loaded
+  function sharp(img, p) { if (!ORIG) return; img.classList.add('lo'); var big = new Image(); big.decoding = 'async'; big.onload = function () { img.src = big.src; img.classList.remove('lo'); }; big.onerror = function () { img.classList.remove('lo'); }; big.src = ORIG + p + '.jpg'; }
+  function zoom(f, img, p) { var z = f.classList.toggle('z'); strip.style.overflowX = z ? 'hidden' : ''; if (z) { if (img.dataset.p) { sharp(img, p); delete img.dataset.p; } f.scrollLeft = (img.scrollWidth - f.clientWidth) / -2; f.scrollTop = (img.scrollHeight - f.clientHeight) / 2; } }
   var st; strip.addEventListener('scroll', function () { clearTimeout(st); st = setTimeout(function () { galIndex(Math.round(Math.abs(strip.scrollLeft) / strip.clientWidth)); }, 60); }, { passive: true });
   function galStep(d) { var k = Math.round(Math.abs(strip.scrollLeft) / strip.clientWidth) + d; k = Math.max(0, Math.min(galCount - 1, k)); strip.scrollTo({ left: -k * strip.clientWidth, behavior: 'smooth' }); }
-  function closeGal() { gal.classList.remove('open'); strip.innerHTML = ''; if (galResume) startWalk(false); }
+  function closeGal() { gal.classList.remove('open'); strip.innerHTML = ''; strip.style.overflowX = ''; if (galResume) { if (yardIdx >= 0) yardPlay(); else startWalk(false); } }
   photosBtn.addEventListener('click', function () { if (curRoom >= 0) openGal(curRoom); });
   document.getElementById('galClose').addEventListener('click', closeGal);
   document.getElementById('galNext').addEventListener('click', function () { galStep(1); });
   document.getElementById('galPrev').addEventListener('click', function () { galStep(-1); });
 
-  document.getElementById('wa').href = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(WHATSAPP_TEXT);
-  window.__tour = { seek: seek, jump: jump, walk: function () { startWalk(false); }, stop: stopWalk, pos: function () { return pos; }, walking: function () { return walking; }, rooms: ROOMS, segs: SEGS, dur: function () { return DUR; }, openGal: openGal, closeGal: closeGal, rate: function () { return v.playbackRate; } };
+  var waHref = 'https://wa.me/' + WHATSAPP_PHONE + '?text=' + encodeURIComponent(WHATSAPP_TEXT);
+  document.getElementById('wa').href = waHref; document.getElementById('wa2').href = waHref;
+
+  // yard finale: the photos of the pergola and the garden, slowly moving, then the end card
+  var yard = document.getElementById('yard'), endCard = document.getElementById('end');
+  var yardIdx = -1, yardOn = false, yardT = null, yardImgs = [];
+  YARD.forEach(function (y, k) { var im = new Image(); im.alt = ''; im.decoding = 'async'; im.dataset.src = SRC.img + y[0] + '.webp'; yard.appendChild(im); yardImgs.push(im); });
+  function yardLoad(k) { var im = yardImgs[k]; if (im && !im.src) { im.src = im.dataset.src; sharpYard(im, YARD[k][0]); } }
+  function sharpYard(im, p) { if (!ORIG) return; var big = new Image(); big.onload = function () { im.src = big.src; }; big.src = ORIG + p + '.jpg'; }
+  function yardShow(k) {
+    yardIdx = k; yardLoad(k); yardLoad(k + 1);
+    yardImgs.forEach(function (im, j) { if (j !== k) { im.classList.remove('show'); } });
+    var im = yardImgs[k]; im.classList.remove('kA', 'kB'); void im.offsetWidth; im.classList.add('show', k % 2 ? 'kB' : 'kA');
+    pos = DUR; curSeg = -2; setCaptionRoom(YARD[k][1]);
+  }
+  function yardPlay() { if (yardIdx < 0) return; yardOn = true; yard.classList.add('on'); clearTimeout(yardT); yardT = setTimeout(yardStep, reduce ? 4000 : 4600); ui(); }
+  function yardPause() { clearTimeout(yardT); yardOn = false; }
+  function yardStep() { if (yardIdx + 1 < YARD.length) { yardShow(yardIdx + 1); yardPlay(); } else { yardOn = false; endOn(); } }
+  function yardStart(k) { stopWalk(); endOff(); yard.classList.add('on'); yardShow(k); yardPlay(); }
+  function yardStop() { yardPause(); yardIdx = -1; yard.classList.remove('on'); endOff(); curSeg = -1; }
+  function endOn() { endCard.classList.add('on'); document.body.classList.add('ended'); ui(); }
+  function endOff() { endCard.classList.remove('on'); document.body.classList.remove('ended'); }
+  function setCaptionRoom(ri) { SEGS.push([1e9, ri]); setCaption(SEGS.length - 1); SEGS.pop(); }
+  document.getElementById('again').addEventListener('click', function () { yardStop(); jump(0.01, true); });
+  yard.addEventListener('click', function () { if (yardOn) { yardPause(); ui(); } else if (yardIdx >= 0) { yardStep(); } });
+  function goRoom(i) {
+    if (ROOMS[i].at === null) { var k = -1; YARD.forEach(function (y, j) { if (k < 0 && y[1] === i) k = j; }); yardStart(Math.max(0, k)); }
+    else { if (yardIdx >= 0) { yardStop(); } jump(ROOMS[i].at, true); }
+  }
+
+  function share() {
+    var url = location.href.split('#')[0] + (curRoom >= 0 ? '#r' + curRoom : '');
+    var text = 'סיור בוילת צלילים בירוחם';
+    if (navigator.share) { navigator.share({ title: 'וילת צלילים', text: text, url: url }).catch(function () {}); }
+    else { window.open('https://wa.me/?text=' + encodeURIComponent(text + '\n' + url), '_blank', 'noopener'); }
+  }
+  document.getElementById('share2').addEventListener('click', share);
+
+  // intro: the house plays softly behind; "start" begins the walk from the door (or from a shared room)
+  var intro = document.getElementById('intro');
+  function begin(roomFirst) {
+    introOff = true; document.body.classList.remove('intro'); intro.classList.add('off'); setTimeout(function () { intro.hidden = true; }, 800);
+    var m = /^#r(\d+)$/.exec(location.hash), ri = m ? +m[1] : -1;
+    if (roomFirst) { document.body.classList.add('menu'); v.pause(); seek(0); return; }
+    if (ri >= 0 && ri < ROOMS.length) { v.pause(); goRoom(ri); }
+    else { v.pause(); seek(0); startWalk(false); }
+    hint.classList.remove('off'); setTimeout(hideHint, 6000);
+  }
+  document.getElementById('start').addEventListener('click', function () { begin(false); });
+  document.getElementById('introRooms').addEventListener('click', function () { begin(true); });
+  window.__tour = { yard: function () { return yardIdx; }, begin: begin, goRoom: goRoom, seek: seek, jump: jump, walk: function () { startWalk(false); }, stop: stopWalk, pos: function () { return pos; }, walking: function () { return walking; }, rooms: ROOMS, segs: SEGS, dur: function () { return DUR; }, openGal: openGal, closeGal: closeGal, rate: function () { return v.playbackRate; } };
   ui(true);
 })();
 </script>
