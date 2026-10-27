@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>סוויטת צליל ירוחם</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="סוויטת צליל בירוחם: סוויטה זוגית עם כניסה פרטית, מרפסת ומטבחון. 9.3 בבוקינג.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="וילת צלילים">
+<meta property="og:title" content="סוויטת צליל ירוחם">
+<meta property="og:description" content="סוויטה זוגית עם מרפסת ומטבחון, בין המכתש הגדול לאגם ירוחם.">
+<meta property="og:url" content="https://yishai108-bit.github.io/villa-tzlilim/suite/">
+<meta property="og:image" content="https://yishai108-bit.github.io/villa-tzlilim/suite/og.jpg">
+<meta property="og:image:secure_url" content="https://yishai108-bit.github.io/villa-tzlilim/suite/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="סוויטת צליל בירוחם">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="סוויטת צליל ירוחם">
+<meta name="twitter:description" content="סוויטה זוגית עם מרפסת ומטבחון בירוחם.">
+<meta name="twitter:image" content="https://yishai108-bit.github.io/villa-tzlilim/suite/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Assistant:wght@400;600;700&display=swap">
+<style>
+/* Layout: one scrolling page in the style of the reference (briaa): warm peach ground, thin condensed
+   Hebrew titles, organic blob-shaped photos, icon grid, long "good to know" lists, contact block. */
+:root{
+  /* Mocha-beige grounds with sage-forest green (Michal's choice); the logo's gold as a small secondary accent. */
+  --top:#f4eee6;       /* header, light beige */
+  --bg:#f4eee6;        /* warm beige ground (Michal: mocha / beige) */
+  --band:#e4d6c7;      /* mocha bands */
+  --card:#fbf8f4;
+  --ink:#2e2925;
+  --title:#4f6b4a;     /* sage-forest green (Michal: mocha-beige + green) */
+  --muted:#6b5d52;
+  --icon:#4f6b4a;
+  --logo:#ad7426;      /* logo gold */
+  --btn:#4f6b4a;
+  --btn-ink:#ffffff;
+  --btn2:#3f5a3b;
+  --btn2-ink:#ffffff;
+  --line:#d5c4b3;
+  --display:"Frank Ruhl Libre", "David", Georgia, serif;
+  --body:"Assistant", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.75;direction:rtl}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--btn);outline-offset:3px}
+
+.wrap{max-width:760px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+.center{text-align:center}
+h1,h2{font-family:var(--display);font-weight:500;color:var(--title);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-size:clamp(44px,10vw,72px)}
+h2{font-size:clamp(34px,7.5vw,48px)}
+h3{font-size:19px;font-weight:700;margin:26px 0 4px}
+p{margin:0 0 14px}
+section{padding-block:56px}
+.band{background:var(--band)}
+
+/* logo: three sound bars, for "צלילים" */
+.mark{display:block;margin:0 auto 10px;width:46px;height:40px;color:var(--logo)}
+.topband{background:var(--top)}
+.logo img{width:58px;height:auto}
+.logo span{display:flex;flex-direction:column;align-items:flex-start}
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
+.logo{display:flex;flex-direction:row;align-items:center;gap:10px;line-height:1;text-decoration:none}
+.logo b{font-family:var(--display);font-weight:700;font-size:32px;color:var(--logo)}
+.logo small{font-size:13px;color:var(--muted);letter-spacing:.04em;margin-top:4px}
+.top .wa-mini svg{width:20px;height:20px}
+.top .wa-mini{display:inline-flex;white-space:nowrap;direction:ltr;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--title);text-decoration:none}
+
+/* hero with wavy edges */
+.hero{position:relative}
+.hero img{width:100%;height:clamp(260px,52vw,560px);object-fit:cover}
+
+.intro p{font-size:19px}
+
+/* blob slider */
+.slider{position:relative;margin-top:8px}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:0}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;display:flex;justify-content:center;padding:6px}
+.blob{width:min(100%,540px);aspect-ratio:1/1.05;object-fit:cover;border-radius:46% 54% 42% 58% / 52% 44% 56% 48%}
+.blob.b2{aspect-ratio:1/1.1;border-radius:55% 45% 52% 48% / 46% 56% 44% 54%}
+.arrows{display:flex;justify-content:center;gap:40px;margin-top:14px}
+.arrows button{background:none;border:0;color:var(--logo);cursor:pointer;padding:6px}
+.arrows svg{width:56px;height:20px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 30px;border-radius:8px;background:var(--btn);color:var(--btn-ink);font-weight:700;font-size:18px;text-decoration:none;border:0;cursor:pointer;font-family:var(--body)}
+.btn:hover{filter:brightness(1.07)}
+.btn svg{width:22px;height:22px}
+.btn.wide{width:100%;background:var(--btn2);color:var(--btn2-ink)}
+
+ul.list{margin:0;padding:0 22px 0 0}
+ul.list li{margin:4px 0}
+.small{font-size:16px;color:var(--muted)}
+
+/* icon grid */
+.icons{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 12px;background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;padding:30px 16px;margin-top:28px;text-align:center}
+.icons div{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:16px;line-height:1.3;min-width:0}
+.icons svg{width:40px;height:40px;color:var(--icon);stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* gallery */
+.gallery{display:grid;gap:16px;margin-top:28px}
+.gallery img{width:100%;border-radius:28px 10px 28px 10px;aspect-ratio:4/3;object-fit:cover}
+.gallery img.tall{aspect-ratio:3/4}
+@media (min-width:700px){.gallery{grid-template-columns:1fr 1fr}.gallery img.tall{grid-row:span 2;height:100%}}
+
+/* suite card over photo */
+.over{position:relative;margin-top:28px}
+.over img{width:100%;border-radius:36px 12px 36px 12px;aspect-ratio:4/5;object-fit:cover}
+.over .card{position:absolute;bottom:18px;right:18px;border-right:4px solid var(--logo);max-width:min(78%,360px);background:color-mix(in srgb,var(--card) 90%,transparent);border-radius:6px;padding:20px 22px;font-size:17px;line-height:1.6}
+.quotes{display:grid;gap:14px;margin-top:26px}
+blockquote{margin:0;background:var(--card);border-radius:6px;border-right:4px solid var(--logo);padding:18px 20px;font-size:17px;line-height:1.6}
+cite{display:block;font-style:normal;font-size:15px;color:var(--muted);margin-top:6px}
+.over .card b{display:block;font-family:var(--display);font-weight:500;font-size:26px;color:var(--title);line-height:1;margin-bottom:8px}
+@media (max-width:420px){.over img{aspect-ratio:3/4}.over .card{max-width:86%;padding:16px}}
+
+/* contact */
+form{display:grid;gap:12px;margin-top:22px}
+label{font-size:15px;font-weight:600;color:var(--muted)}
+input,textarea,select{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--line);border-radius:4px;background:var(--card);color:var(--ink)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row2>div{min-width:0}
+.phone{direction:ltr;unicode-bidi:isolate;user-select:all;font-weight:700}
+footer{background:var(--band);border-top:1px solid var(--line);padding-block:40px 30px;text-align:center}
+footer p{margin:6px 0}
+.sub{font-size:14px;color:var(--muted);margin-top:24px}
+
+/* floating whatsapp */
+.fab{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:calc(18px + env(safe-area-inset-left,0px));z-index:20;width:60px;height:60px;border-radius:50%;background:#25a35b;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.fab svg{width:32px;height:32px}
+
+/* auto-playing photo shows: swipeable, dots, soft organic frame */
+.show{position:relative;overflow:hidden;border-radius:36px 12px 36px 12px;background:var(--line)}
+.show-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+.show-track::-webkit-scrollbar{display:none}
+.show-slide{flex:0 0 100%;scroll-snap-align:center;margin:0;position:relative;aspect-ratio:3/2;background-size:cover;background-position:center}
+.show-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.show-slide figcaption{position:absolute;inset:auto 0 0 0;direction:rtl;padding:26px 16px 30px;font-size:15px;font-weight:600;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.55),transparent)}
+.dots{position:absolute;inset:auto 0 10px 0;direction:ltr;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}
+.dots i.on{background:#fff;width:18px;border-radius:4px}
+.hero .show{border-radius:0;background:none}
+.hero .show-slide{aspect-ratio:auto;height:clamp(300px,56vw,580px)}
+.hero .show-slide figcaption{display:none}
+.show-arr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.82);color:#3b3027;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.show-arr svg{width:22px;height:22px}
+.show-arr.prev{right:14px}.show-arr.next{left:14px}
+.shows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:30px 24px;margin-top:28px}
+.show-block{min-width:0}
+.show-block h3{margin:0 0 10px}
+@media (prefers-reduced-motion: reduce){.show-track{scroll-behavior:auto}}
+</style>
+
+</head>
+<body><div class="topband"><div class="wrap top">
+  <a class="logo" href="../" aria-label="וילת צלילים"><img src="../img/emblem.webp" alt=""><span><b>סוויטת צליל</b><small>ירוחם · סוויטה זוגית</small></span></a>
+  <a class="wa-mini" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>052-525-7701</a>
+</div>
+
+<div class="hero"><div class="show" data-show data-manual><div class="show-track" dir="ltr"><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDpTM0J2yKd3Qgd6Y98qA/u3/SmX1y8Me4x72kJHB6Vmi+dlMnkMMetZOVnY0Ubq5rvdERb2tpNoGc/1qZTuQMRjIziqc19PLaCIKgDqAcIeBip4Jg0SqchgMEEGrRLRSa5MjOCowvApQcrjsetFFYy3ZstjGkjuSzEXsoB7Ve0eynnVppL6VijFQpHFFFRSk3KzHUSUbo//9k=);background-position:55% 72%"><img src="../img/o/26.jpg" alt="הסוויטה" style="object-position:55% 72%" fetchpriority="high" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCW2kxirT33lny0bg889f51jpcLEMudvGeR1FIPOvG3W+1lHes0mtTW99DUN6jyKMZx144FLdSIt0rxy+WwXG5PXPp3rn52uIpCrhlCr1B4bkUxpJUm3JkgnPBzS5mRLQay+e6qxOAK39IgWKJgvaiihstFu4to5lwwrm72zS3mbYxx6dqKKzb1RoldM//Z);background-position:50% 50%"><img data-src="../img/o/79.jpg" alt="החצר של הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>החצר של הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDorViN2M7eMkdjVh8Dng/his4X8VvE53KV6kg+naq//CQ2l6/2eES7343JwV96zWxdmzQSbzLl15URHDZ78VOZVxlMn8KyYFuYpJnhDsAfvOck/KME+p4pUuryaHBliik6EbuRSuFmTW4jW1BESdc9KjtFRIgURVzzwKKK5btnVYsxNgSj1XNZ7EKkjEZyMkED0ooreHwoxluz/9k=);background-position:50% 50%"><img data-src="../img/o/29.jpg" alt="הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgABUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDrIwPLxUEjPE/ynGafKdjgLMqEclSOtVJbnZdhZpYfLbATnknPP9KzavoUmOyGOSNx9aK1DxwAB9KKfKHMZeoWjTzKyuAQVwCPTPf8f0qjdWEXAmG5oxkMpIOauLexuF3OAVIzmoLgC4lLElVIwOxNQ5q1y1B3sTKMqMlun940VCvmIMCXjtuANFZ+1RXs2f/Z);background-position:50% 52%"><img data-src="../img/o/32.jpg" alt="הסוויטה" style="object-position:50% 52%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC3DcyIAypjHI3f4VYjulx++YqxbglflIqnMxij+Y/w8EYOPrz0rLSeSe9jEYZow465w3/1qiMmti5RTOyFt+B7VSvJcuc8lcjrVTUri9SJS0whxklgAcntmokmM0CmRg0uMuR6+tXKTlqTGPLoV9OiW8ht1cAAxLnitf7PHAQEHSiisUjdsZeqJoGVxlehHrWJbfup2CkkMMYJzjH/AOuiiqJ6H//Z);background-position:50% 50%"><img data-src="../img/o/80.jpg" alt="החצר של הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>החצר של הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDobO/t9StUubVy0bZAJBByOvFSK7knBGB7VnwQweGrCGFWeaPccMcZySPSrSahFIXyAq44fHU1nYvcm858E7SBnGe1QF3lkxjPoPSozePBbsI28yNCWAP59qp2moGVmbaYznA5+8PapcuhXLbUku75pLoxFBlMHJPqKZp8jNf3Esh3CCEuEPQmiiqjq7lrSBJHhZCEBC5GATk9KRrkxXsSlQwkO3nt70UU5bF7o//Z);background-position:50% 50%"><img data-src="../img/o/28.jpg" alt="הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbhZ4R+7YgenarUVzIR5jwswHG5RkD8Kz4ryGQErnj1FLH4gjUPAGVTzkupHWsYs1auaow6iRc4YdTUUskaIzO3yqPmqO31CNo4oyCARgP2b6etNuTHLFMmHdSdreUMkcDtWhFrFS1th5fLHkc44puoaVazWW8RiN1PDL1oormhqmzoloyjY2uZhLNI0jRgKmegGKuRMI7tgo+8OfrRRSg22OSVj//2Q==);background-position:50% 50%"><img data-src="../img/o/27.jpg" alt="הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCzHMoX/wCvUyTFHDIcEVhQtNiN9rMpXdlRnHOOafc3clsVSSNwzDIGKy5LG3Nc2LnUTPC0YVRs5OT1qH7TvUlxtQDg59/SsvZdDMm3aCvJz7VWN1t3q64zhueeambZEnyrQWxv7i2h2RuApPcVs2C+fl5v3jZ6tzRRVSk27FxStcuzwq8JHTiuVvcQ3hjVRtfGaKKhblNXR//Z);background-position:50% 50%"><img data-src="../img/o/78.jpg" alt="החצר של הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>החצר של הסוויטה</figcaption></figure></div><button type="button" class="show-arr prev" data-step="-1" aria-label="התמונה הקודמת"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 5 7 7-7 7"/></svg></button><button type="button" class="show-arr next" data-step="1" aria-label="התמונה הבאה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5-7 7 7 7"/></svg></button><div class="dots" aria-hidden="true"></div></div></div></div>
+
+<main>
+<section class="intro center"><div class="wrap">
+  <svg class="mark" viewBox="0 0 46 40" fill="currentColor" aria-hidden="true"><rect x="6" y="14" width="4" height="12" rx="2"/><rect x="15" y="6" width="4" height="28" rx="2"/><rect x="24" y="0" width="4" height="40" rx="2"/><rect x="33" y="10" width="4" height="20" rx="2"/></svg>
+  <h1>סוויטת צליל</h1>
+  <p>סוויטה זוגית בירוחם, עם כניסה פרטית, מרפסת ומטבחון.</p>
+  <p>מיטה זוגית גדולה, ספה נפתחת, ופינת ישיבה בחוץ לקפה של הבוקר ולארוחה בערב.</p>
+  <p>הסוויטה עוצבה בידי מיכל, אדריכלית ומעצבת פנים, שמארחת כאן עם דוד כבר יותר מ-9 שנים.</p>
+  <p><b>9.3 בבוקינג</b> מ-42 חוות דעת, ועוד יותר מ-70 ביקורות בגוגל.</p>
+  <p style="margin-top:22px"><a class="btn" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>לפרטים וזמינות בוואטסאפ</a></p>
+
+  <div class="icons">
+    <div><svg viewBox="0 0 48 48"><rect x="6" y="12" width="36" height="14" rx="3"/><path d="M11 21h26M14 31v6M24 31v8M34 31v6"/></svg>מיזוג וחימום</div>
+    <div><svg viewBox="0 0 48 48"><path d="M8 20a23 23 0 0 1 32 0M13 26a15 15 0 0 1 22 0M18 32a8 8 0 0 1 12 0"/><circle cx="24" cy="37" r="1.5"/></svg>אינטרנט אלחוטי</div>
+    <div><svg viewBox="0 0 48 48"><rect x="9" y="8" width="30" height="34" rx="2"/><path d="M9 16h30M15 12h2M21 12h2M27 12h2"/><rect x="14" y="21" width="20" height="15" rx="1"/></svg>מטבחון מאובזר</div>
+    <div><svg viewBox="0 0 48 48"><path d="M24 40V20M24 26c-6 0-10-4-10-10 6 0 10 4 10 10zM24 22c0-6 4-10 10-10 0 6-4 10-10 10zM8 40h32"/></svg>מרפסת פרטית</div>
+    <div><svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="22" rx="2"/><path d="M18 40h12M24 32v8"/></svg>טלוויזיה וסטרימינג</div>
+    <div><svg viewBox="0 0 48 48"><path d="M9 20h30a15 15 0 0 1-30 0zM18 34l-5 8M30 34l5 8M24 35v7M18 14c0-3 3-3 3-6M26 14c0-3 3-3 3-6"/></svg>מנגל</div>
+    <div><svg viewBox="0 0 48 48"><path d="M10 30l3-9a3 3 0 0 1 3-2h16a3 3 0 0 1 3 2l3 9v7h-4v-3H14v3h-4z"/><circle cx="16" cy="30" r="2"/><circle cx="32" cy="30" r="2"/></svg>חניה חינם</div>
+    <div><svg viewBox="0 0 48 48"><circle cx="14" cy="20" r="3"/><circle cx="20" cy="13" r="3"/><circle cx="28" cy="13" r="3"/><circle cx="34" cy="20" r="3"/><path d="M24 23c-5 0-10 7-10 11 0 4 4 4 10 2 6 2 10 2 10-2 0-4-5-11-10-11z"/></svg>חיות מחמד בחינם</div>
+    <div><svg viewBox="0 0 48 48"><path d="M10 8v34M38 8v34M10 18h28M10 34h28M10 14h28M10 30h28"/><path d="M34 18v6"/></svg>מיטה נוספת לפי בקשה</div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>בסוויטה</h2>
+  <ul class="list" style="margin-top:12px">
+    <li>חדר שינה: מיטה זוגית גדולה, מצעים, שעון מעורר, שקע ליד המיטה</li>
+    <li>סלון: ספה נפתחת, פינת ישיבה, פינת אוכל ושולחן עבודה</li>
+    <li>מטבחון: מכונת קפה, קומקום, כיריים, מיקרוגל, מקרר, כלי מטבח ושולחן אוכל</li>
+    <li>חדר רחצה: מקלחת, מגבות ומוצרי טיפוח</li>
+    <li>טלוויזיה עם מסך שטוח, שירות סטרימינג ורדיו</li>
+    <li>מיזוג, חימום, מאוורר, רצפת עץ ובידוד אקוסטי</li>
+    <li>בחוץ: מרפסת שמש, ריהוט גינה, פינת אוכל בחוץ ומנגל</li>
+    <li>לילדים: מתקני משחק בחוץ, ספרים ומשחקי קופסה</li>
+  </ul>
+
+  <div class="over" style="margin-top:34px">
+    <img src="../img/o/29.jpg" alt="הסוויטה והמטבחון" loading="lazy">
+    <div class="card"><b>"פשוט תענוג"</b>"נקי, מסודר, נעים, מאובזר. פשוט תענוג, והכי כיף שמקבלים כלבים."<br><span class="small">דנה, בבוקינג</span></div>
+  </div>
+  <div class="quotes">
+    <blockquote>"המקום מעוצב בטוב טעם, מוקפד ונקי. יש מבואה בחוץ שאפשר לשבת בה. הבעלים מיכל אפילו העלתה לנו חלות לשבת."<cite>אמיר</cite></blockquote>
+    <blockquote>"נקי, מאורגן ונותן מענה לכל הצרכים, מחיר הוגן, שרות מעולה ואפילו פינוקים קטנים כמו מכונת קפה, סבונים ובקבוקי מים."<cite>דורית</cite></blockquote>
+    <blockquote>"העיצוב של החדר, המטבח, מכונת קפה, הערסל ישיבה ושולחן לארוחה בחוץ."<cite>יונית</cite></blockquote>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>כל מה שכדאי לדעת</h2>
+  <ul class="list" style="margin-top:12px">
+    <li>כניסה מ-15:00 עד 23:00, נא לעדכן מראש בשעת ההגעה</li>
+    <li>יציאה עד 11:00</li>
+    <li>ילדים בכל גיל מתקבלים בשמחה</li>
+    <li>מיטה נוספת לפי בקשה, 150 ש"ח לאדם ללילה. אין מיטות תינוק.</li>
+    <li>חיות מחמד מתקבלות בחינם</li>
+    <li>אינטרנט אלחוטי וחניה ברחוב בחינם</li>
+    <li>אין לעשן בסוויטה</li>
+  </ul>
+  <h3 style="margin-top:30px">בסביבה</h3>
+  <p>ירוחם שקטה, בלי לחות, ועם בריזה מדברית קרירה. קרוב לסוויטה: אגם ירוחם, מכתש ירוחם (המכתש הגדול) ועין ירקעם, ושבילי הליכה ואופניים.</p>
+
+  <h3 style="margin-top:30px">עוד תמונות</h3>
+  <div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAVACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDeU54q4m+MqpUHIyCMVRVwp4YZHv0p1xrEMbxNIyKNpxhves0aWuW5DnJOfxNVdSKCx5w2GXIGKiGsWk52K+SecDmqU1naWFjPJas7NPIrtltw6npTYrNPUqX/ANotbZHguNm5wMBBUdhosF3KXkeQbuytjtRRXJGcmrtnW4pLQ0bfRLe0uFljeUsM/ebNW5LeN4mDKCCeeOtFFUQf/9k=);background-position:50% 50%"><img src="../img/o/30.jpg" alt="הסוויטה" style="object-position:50% 50%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgABUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDp0mjlV/LYNsJVvYioVeXuFb9KSxiyHPTdJLz/AMCqwIWQgN+lQUJGxYZO1fZjRT47Z5slZAmDjFFAGLHriWklzFJG2IpXAI75brV2z1ZboBiQEJxjuMVjahZPaNNdSMDNLOTCCAQiZJ5HvmoYra4kmFxJMCwIJ4xmolJRepcY3OlM8IlYs3Xp1orKeck5J570VHtSvZH/2Q==);background-position:50% 60%"><img data-src="../img/o/35.jpg" alt="הסוויטה" style="object-position:50% 60%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgABUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDq0dhECykY/X3pFUvyeBShlCKGJA2imGVVKqoZmIyR6VLGShQKKbuPYUUhlaWbYV+YAbc8mliuPMj37gw9V6VRuLUXgxK+VAwVAIzntUsW22QBPlVB0xwK53iYp7Aol9XBHWiqi3kMgyUwfUZ5orpTTV0I/9k=);background-position:50% 74%"><img data-src="../img/o/36.jpg" alt="הסוויטה" style="object-position:50% 74%" decoding="async"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide" style="background-image:url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAgABUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC3aam8YOSfYdRV+fUY5rR0KjecYINc3I/2aQxPxIvUZ6UsMommWMk4b0pJsuKXMi07K7kAgkdcdqKBHHETsB56k96Kye+h6kU7amPeTb9UlLoZAwUjBx2p9rbyx3SzM/yDPy1dggy2Wx25p8q5BXoa05uh5kUk0xGkyetFUpHZGw3BoqbHpKeh/9k=);background-position:50% 56%"><img data-src="../img/o/77.jpg" alt="החצר של הסוויטה" style="object-position:50% 56%" decoding="async"><figcaption>החצר של הסוויטה</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div>
+  <p style="margin-top:26px"><a class="btn" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>לפרטים וזמינות בוואטסאפ</a></p>
+</div></section>
+
+<section class="band"><div class="wrap center">
+  <svg class="mark" viewBox="0 0 46 40" fill="currentColor" aria-hidden="true"><rect x="6" y="14" width="4" height="12" rx="2"/><rect x="15" y="6" width="4" height="28" rx="2"/><rect x="24" y="0" width="4" height="40" rx="2"/><rect x="33" y="10" width="4" height="20" rx="2"/></svg>
+  <h2>וילת צלילים</h2>
+  <p style="margin-top:12px">הסוויטה היא חלק מקומפלקס וילת צלילים.</p>
+  <p>מגיעים עם המשפחה או עם חברים? הוילה כולה מארחת קבוצות.</p>
+  <p><a href="../" style="font-weight:700;color:var(--title)">לדף של וילת צלילים</a></p>
+</div></section>
+
+<section id="contact"><div class="wrap center">
+  <h2>יצירת קשר</h2>
+  <p style="margin-top:12px">הכי טוב לדבר איתנו בוואטסאפ, אבל אפשר גם למלא כאן את הפרטים, וההודעה תיפתח בוואטסאפ מוכנה לשליחה.</p>
+  <form id="f" style="text-align:right">
+    <input type="hidden" id="f-what" value="סוויטת צליל">
+    <div class="row2">
+      <div><label for="f-name">שם</label><input id="f-name" autocomplete="name"></div>
+      <div><label for="f-guests">כמה אורחים</label><input id="f-guests" inputmode="numeric"></div>
+    </div>
+    <div><label for="f-dates">תאריכים</label><input id="f-dates" placeholder="למשל 12-14.11"></div>
+    <div><label for="f-msg">הודעה</label><textarea id="f-msg" rows="3"></textarea></div>
+    <a class="btn wide" id="f-send" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>שליחה בוואטסאפ</a>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <img src="../img/logo.webp" alt="וילת צלילים" style="width:170px;margin:0 auto 18px">
+  <h2>פרטי קשר</h2>
+  <p style="margin-top:14px">טלפון ו-וואטסאפ: <span class="phone">052-525-7701</span></p>
+  <p>סוויטת צליל, נחל אבנון 9, ירוחם</p>
+  <p><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA+%D7%A6%D7%9C%D7%99%D7%9C+%D7%99%D7%A8%D7%95%D7%97%D7%9D" target="_blank" rel="noopener">איך מגיעים, בגוגל מפות</a></p>
+  <p class="sub">© וילת צלילים, ירוחם</p>
+</div></footer>
+
+<a class="fab" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg></a>
+<script>
+(function(){
+  // photo shows: autoplay every 3.8s while on screen (not the hero, which moves only by hand), pause after the visitor touches one
+  document.querySelectorAll('[data-show]').forEach(function(s){
+    var t=s.querySelector('.show-track'),sl=[].slice.call(t.children),n=sl.length,i=0,hold=0,seen=false;
+    var dots=s.querySelector('.dots');
+    if(dots){sl.forEach(function(){dots.appendChild(document.createElement('i'));});}
+    function load(k){var im=sl[(k+n)%n].querySelector('img');if(im&&im.dataset.src){im.src=im.dataset.src;im.removeAttribute('data-src');}}
+    function mark(){if(dots)[].forEach.call(dots.children,function(d,k){d.className=k===i?'on':'';});load(i+1);}
+    function go(k){i=(k+n)%n;load(i);t.scrollTo({left:i*t.clientWidth});mark();}
+    var tm;t.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var k=Math.round(Math.abs(t.scrollLeft)/t.clientWidth);if(k!==i){i=k;load(i);mark();}},80);});
+    ['pointerdown','touchstart','wheel'].forEach(function(e){t.addEventListener(e,function(){hold=Date.now()+8000;},{passive:true});});
+    s.querySelectorAll('[data-step]').forEach(function(b){b.addEventListener('click',function(){hold=Date.now()+8000;go(i+ +b.getAttribute('data-step'));});});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){seen=es[0].isIntersecting;if(seen)load(i+1);},{rootMargin:'200px'}).observe(s);}else{seen=true;}
+    mark();
+    if(!s.hasAttribute('data-manual'))setInterval(function(){if(seen&&Date.now()>hold&&!document.hidden)go(i+1);},3800+Math.random()*600);
+  });
+  var f=document.getElementById('f'),a=document.getElementById('f-send');
+  function v(id){return (document.getElementById(id).value||'').trim();}
+  function upd(){
+    var lines=['היי, הגעתי מהאתר של וילת צלילים.'];
+    if(v('f-name'))lines.push('שמי '+v('f-name')+'.');
+    lines.push('מתעניינים ב: '+v('f-what')+'.');
+    if(v('f-guests'))lines.push('כמה אורחים: '+v('f-guests')+'.');
+    if(v('f-dates'))lines.push('תאריכים: '+v('f-dates')+'.');
+    if(v('f-msg'))lines.push(v('f-msg'));
+    a.href='https://wa.me/972525257701?text='+encodeURIComponent(lines.join('\n'));
+  }
+  f.addEventListener('input',upd);f.addEventListener('change',upd);
+  f.addEventListener('submit',function(e){e.preventDefault();});
+  upd();
+})();
+</script>
+
+</body>
+</html>
