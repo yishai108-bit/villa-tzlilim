@@ -140,6 +140,24 @@ footer p{margin:6px 0}
 /* floating whatsapp */
 .fab{position:fixed;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:calc(18px + env(safe-area-inset-left,0px));z-index:20;width:60px;height:60px;border-radius:50%;background:#25a35b;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.22)}
 .fab svg{width:32px;height:32px}
+
+/* auto-playing photo shows: swipeable, dots, soft organic frame */
+.show{position:relative;overflow:hidden;border-radius:36px 12px 36px 12px;background:var(--line)}
+.show-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth}
+.show-track::-webkit-scrollbar{display:none}
+.show-slide{flex:0 0 100%;scroll-snap-align:center;margin:0;position:relative;aspect-ratio:3/2}
+.show-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.show-slide figcaption{position:absolute;inset:auto 0 0 0;direction:rtl;padding:26px 16px 30px;font-size:15px;font-weight:600;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.55),transparent)}
+.dots{position:absolute;inset:auto 0 10px 0;direction:ltr;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}
+.dots i.on{background:#fff;width:18px;border-radius:4px}
+.hero .show{border-radius:0;background:none}
+.hero .show-slide{aspect-ratio:auto;height:clamp(300px,56vw,580px)}
+.hero .show-slide figcaption{display:none}
+.shows{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:30px 24px;margin-top:28px}
+.show-block{min-width:0}
+.show-block h3{margin:0 0 10px}
+@media (prefers-reduced-motion: reduce){.show-track{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -149,7 +167,7 @@ footer p{margin:6px 0}
   <a class="wa-mini" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20%D7%95%D7%99%D7%9C%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>052-525-7701</a>
 </div>
 
-<div class="hero"><img src="img/01-cover-living-room.webp" alt="הסלון של וילת צלילים"></div></div>
+<div class="hero"><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/01.webp" alt="הסלון" fetchpriority="high"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/85.webp" alt="הפרגולה"><figcaption>הפרגולה</figcaption></figure><figure class="show-slide"><img data-src="img/t/06.webp" alt="הסלון"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/87.webp" alt="הגינה"><figcaption>הגינה</figcaption></figure><figure class="show-slide"><img data-src="img/t/24.webp" alt="פינת האוכל"><figcaption>פינת האוכל</figcaption></figure><figure class="show-slide"><img data-src="img/t/74.webp" alt="הבית מהרחוב"><figcaption>הבית מהרחוב</figcaption></figure><figure class="show-slide"><img data-src="img/t/10.webp" alt="המטבח"><figcaption>המטבח</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div></div>
 
 <main>
 <section class="intro center"><div class="wrap">
@@ -162,17 +180,17 @@ footer p{margin:6px 0}
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
-  <div class="slider" data-slider>
-    <div class="track">
-      <div class="slide"><img class="blob" src="img/05-living-room.webp" alt="הסלון"></div>
-      <div class="slide"><img class="blob" src="img/06-dining-table.webp" alt="שולחן האוכל"></div>
-      <div class="slide"><img class="blob" src="img/03-yard-pergola.webp" alt="הפרגולה"></div>
-      <div class="slide"><img class="blob" src="img/04-garden.webp" alt="הגינה"></div>
-      <div class="slide"><img class="blob" src="img/07-kitchen.webp" alt="המטבח"></div>
+  <div class="slider" data-show data-plain>
+    <div class="track show-track" dir="ltr">
+      <div class="slide show-slide"><img class="blob" src="img/05-living-room.webp" alt="הסלון"></div>
+      <div class="slide show-slide"><img class="blob" src="img/06-dining-table.webp" alt="שולחן האוכל"></div>
+      <div class="slide show-slide"><img class="blob" src="img/03-yard-pergola.webp" alt="הפרגולה"></div>
+      <div class="slide show-slide"><img class="blob" src="img/04-garden.webp" alt="הגינה"></div>
+      <div class="slide show-slide"><img class="blob" src="img/07-kitchen.webp" alt="המטבח"></div>
     </div>
     <div class="arrows">
-      <button type="button" data-dir="1" aria-label="התמונה הקודמת"><svg viewBox="0 0 56 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10h52M44 2l10 8-10 8"/></svg></button>
-      <button type="button" data-dir="-1" aria-label="התמונה הבאה"><svg viewBox="0 0 56 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M54 10H2M12 2 2 10l10 8"/></svg></button>
+      <button type="button" data-step="-1" aria-label="התמונה הקודמת"><svg viewBox="0 0 56 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10h52M44 2l10 8-10 8"/></svg></button>
+      <button type="button" data-step="1" aria-label="התמונה הבאה"><svg viewBox="0 0 56 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M54 10H2M12 2 2 10l10 8"/></svg></button>
     </div>
   </div>
 
@@ -273,16 +291,22 @@ footer p{margin:6px 0}
     <div class="card"><b>"בודאות נשוב"</b>"הוילה עברה שיפוץ, אוירה נעימה, מאובזרת מאוד. הכל ממש מתוקתק. בעלי הבית אדיבים ונחמדים."<br><span class="small">דוד, 10 בבוקינג</span></div>
   </div>
 
-  <div class="gallery">
-    <img class="tall" src="img/08-upper-floor.webp" alt="הקומה העליונה">
-    <img src="img/09-family-lounge.webp" alt="פינת הטלוויזיה">
-    <img src="img/11-family-bedroom.webp" alt="חדר משפחתי">
-    <img src="img/02-exterior-entrance.webp" alt="הכניסה לבית">
-    <img src="img/12-bathroom.webp" alt="מקלחת">
-  </div>
 </div></section>
 
-<section class="band" id="suite"><div class="wrap">
+<section id="photos" class="band"><div class="wrap">
+  <div class="center"><svg class="mark" viewBox="0 0 46 40" fill="currentColor" aria-hidden="true"><rect x="6" y="14" width="4" height="12" rx="2"/><rect x="15" y="6" width="4" height="28" rx="2"/><rect x="24" y="0" width="4" height="40" rx="2"/><rect x="33" y="10" width="4" height="20" rx="2"/></svg><h2>תמונות מהבית</h2></div>
+  <div class="shows">
+    <div class="show-block"><h3>בחוץ: הכניסה, הפרגולה והגינה</h3><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/74.webp" alt="הבית מהרחוב"><figcaption>הבית מהרחוב</figcaption></figure><figure class="show-slide"><img data-src="img/t/73.webp" alt="הכניסה"><figcaption>הכניסה</figcaption></figure><figure class="show-slide"><img data-src="img/t/76.webp" alt="המדרגות לסוויטה"><figcaption>המדרגות לסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/85.webp" alt="הפרגולה"><figcaption>הפרגולה</figcaption></figure><figure class="show-slide"><img data-src="img/t/86.webp" alt="הפרגולה"><figcaption>הפרגולה</figcaption></figure><figure class="show-slide"><img data-src="img/t/84.webp" alt="הפרגולה"><figcaption>הפרגולה</figcaption></figure><figure class="show-slide"><img data-src="img/t/87.webp" alt="הגינה"><figcaption>הגינה</figcaption></figure><figure class="show-slide"><img data-src="img/t/83.webp" alt="הגינה"><figcaption>הגינה</figcaption></figure><figure class="show-slide"><img data-src="img/t/82.webp" alt="הגינה"><figcaption>הגינה</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div>
+    <div class="show-block"><h3>הסלון ופינת האוכל</h3><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/06.webp" alt="הסלון"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/07.webp" alt="הסלון"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/04.webp" alt="הסלון"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/03.webp" alt="הסלון"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/01.webp" alt="הסלון"><figcaption>הסלון</figcaption></figure><figure class="show-slide"><img data-src="img/t/24.webp" alt="פינת האוכל"><figcaption>פינת האוכל</figcaption></figure><figure class="show-slide"><img data-src="img/t/02.webp" alt="פינת האוכל"><figcaption>פינת האוכל</figcaption></figure><figure class="show-slide"><img data-src="img/t/16.webp" alt="פינת האוכל"><figcaption>פינת האוכל</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div>
+    <div class="show-block"><h3>המטבח</h3><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/10.webp" alt="המטבח"><figcaption>המטבח</figcaption></figure><figure class="show-slide"><img data-src="img/t/12.webp" alt="המטבח"><figcaption>המטבח</figcaption></figure><figure class="show-slide"><img data-src="img/t/15.webp" alt="המטבח"><figcaption>המטבח</figcaption></figure><figure class="show-slide"><img data-src="img/t/13.webp" alt="פינת הקפה"><figcaption>פינת הקפה</figcaption></figure><figure class="show-slide"><img data-src="img/t/14.webp" alt="המטבח"><figcaption>המטבח</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div>
+    <div class="show-block"><h3>חדרי השינה</h3><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/52.webp" alt="חדר שינה זוגי"><figcaption>חדר שינה זוגי</figcaption></figure><figure class="show-slide"><img data-src="img/t/54.webp" alt="חדר שינה זוגי"><figcaption>חדר שינה זוגי</figcaption></figure><figure class="show-slide"><img data-src="img/t/57.webp" alt="חדר שינה נוסף"><figcaption>חדר שינה נוסף</figcaption></figure><figure class="show-slide"><img data-src="img/t/58.webp" alt="חדר שינה נוסף"><figcaption>חדר שינה נוסף</figcaption></figure><figure class="show-slide"><img data-src="img/t/46.webp" alt="חדר ילדים"><figcaption>חדר ילדים</figcaption></figure><figure class="show-slide"><img data-src="img/t/47.webp" alt="חדר ילדים"><figcaption>חדר ילדים</figcaption></figure><figure class="show-slide"><img data-src="img/t/45.webp" alt="חדר ילדים"><figcaption>חדר ילדים</figcaption></figure><figure class="show-slide"><img data-src="img/t/37.webp" alt="חדר ילדים, למעלה"><figcaption>חדר ילדים, למעלה</figcaption></figure><figure class="show-slide"><img data-src="img/t/39.webp" alt="חדר ילדים, למעלה"><figcaption>חדר ילדים, למעלה</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div>
+    <div class="show-block"><h3>פינת הטלוויזיה והקומה העליונה</h3><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/09.webp" alt="פינת הטלוויזיה"><figcaption>פינת הטלוויזיה</figcaption></figure><figure class="show-slide"><img data-src="img/t/50.webp" alt="פינת הטלוויזיה"><figcaption>פינת הטלוויזיה</figcaption></figure><figure class="show-slide"><img data-src="img/t/49.webp" alt="פינת הטלוויזיה"><figcaption>פינת הטלוויזיה</figcaption></figure><figure class="show-slide"><img data-src="img/t/51.webp" alt="פינת הטלוויזיה"><figcaption>פינת הטלוויזיה</figcaption></figure><figure class="show-slide"><img data-src="img/t/43.webp" alt="הקומה העליונה"><figcaption>הקומה העליונה</figcaption></figure><figure class="show-slide"><img data-src="img/t/44.webp" alt="הקומה העליונה"><figcaption>הקומה העליונה</figcaption></figure><figure class="show-slide"><img data-src="img/t/19.webp" alt="המדרגות"><figcaption>המדרגות</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div>
+    <div class="show-block"><h3>חדרי הרחצה</h3><div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/61.webp" alt="חדר רחצה עם אמבטיה"><figcaption>חדר רחצה עם אמבטיה</figcaption></figure><figure class="show-slide"><img data-src="img/t/59.webp" alt="חדר רחצה עם אמבטיה"><figcaption>חדר רחצה עם אמבטיה</figcaption></figure><figure class="show-slide"><img data-src="img/t/40.webp" alt="חדר רחצה, למעלה"><figcaption>חדר רחצה, למעלה</figcaption></figure><figure class="show-slide"><img data-src="img/t/41.webp" alt="חדר רחצה, למעלה"><figcaption>חדר רחצה, למעלה</figcaption></figure><figure class="show-slide"><img data-src="img/t/23.webp" alt="המסדרון"><figcaption>המסדרון</figcaption></figure><figure class="show-slide"><img data-src="img/t/22.webp" alt="המסדרון"><figcaption>המסדרון</figcaption></figure><figure class="show-slide"><img data-src="img/t/55.webp" alt="שירותי האורחים"><figcaption>שירותי האורחים</figcaption></figure><figure class="show-slide"><img data-src="img/t/56.webp" alt="שירותי האורחים"><figcaption>שירותי האורחים</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div></div>
+  </div>
+  <p class="center" style="margin-top:30px"><a class="btn" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%95%D7%99%D7%9C%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C%D7%99%D7%9D" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>לפרטים וזמינות בוואטסאפ</a></p>
+</div></section>
+
+<section id="suite"><div class="wrap">
   <div class="center"><svg class="mark" viewBox="0 0 46 40" fill="currentColor" aria-hidden="true"><rect x="6" y="14" width="4" height="12" rx="2"/><rect x="15" y="6" width="4" height="28" rx="2"/><rect x="24" y="0" width="4" height="40" rx="2"/><rect x="33" y="10" width="4" height="20" rx="2"/></svg><h2>סוויטת צליל</h2></div>
   <div class="over">
     <img src="img/s-02-suite-bedroom-kitchenette.webp" alt="סוויטת צליל">
@@ -307,12 +331,8 @@ footer p{margin:6px 0}
     <blockquote>"המקום מעוצב בטוב טעם, מוקפד ונקי. יש מבואה בחוץ שאפשר לשבת בה. הבעלים מיכל אפילו העלתה לנו חלות לשבת."<cite>אמיר</cite></blockquote>
     <blockquote>"נקי, מאורגן ונותן מענה לכל הצרכים, מחיר הוגן, שרות מעולה ואפילו פינוקים קטנים כמו מכונת קפה, סבונים ובקבוקי מים."<cite>דורית</cite></blockquote>
   </div>
-  <div class="gallery">
-    <img src="img/s-06-suite-balcony.webp" alt="המרפסת של הסוויטה">
-    <img src="img/s-03-suite-coffee-corner.webp" alt="פינת הקפה">
-    <img src="img/s-05-suite-patio.webp" alt="החצר הפרטית">
-    <img src="img/s-04-suite-sofa.webp" alt="פינת ישיבה">
-  </div>
+  <h3 style="margin-top:30px">תמונות מהסוויטה</h3>
+  <div class="show" data-show><div class="show-track" dir="ltr"><figure class="show-slide"><img src="img/t/26.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/27.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/30.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/29.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/28.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/35.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/32.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/36.webp" alt="הסוויטה"><figcaption>הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/79.webp" alt="החצר של הסוויטה"><figcaption>החצר של הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/78.webp" alt="החצר של הסוויטה"><figcaption>החצר של הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/77.webp" alt="החצר של הסוויטה"><figcaption>החצר של הסוויטה</figcaption></figure><figure class="show-slide"><img data-src="img/t/80.webp" alt="החצר של הסוויטה"><figcaption>החצר של הסוויטה</figcaption></figure></div><div class="dots" aria-hidden="true"></div></div>
   <p style="margin-top:26px"><a class="btn" href="https://wa.me/972525257701?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%AA%D7%90%D7%A8%D7%99%D7%9B%D7%99%D7%9D%20%D7%9C%D7%A1%D7%95%D7%95%D7%99%D7%98%D7%AA%20%D7%A6%D7%9C%D7%99%D7%9C" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.35-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.93-4.66-4.11-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.55.79 1.89.86 2.03.07.14.11.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33z"/></svg>לפרטים וזמינות בוואטסאפ</a></p>
 </div></section>
 
@@ -346,15 +366,20 @@ footer p{margin:6px 0}
 
 <script>
 (function(){
-  document.querySelectorAll('[data-slider]').forEach(function(s){
-    var t=s.querySelector('.track');
-    s.querySelectorAll('[data-dir]').forEach(function(b){
-      b.addEventListener('click',function(){
-        var dir=+b.getAttribute('data-dir');
-        // RTL: scrollLeft runs 0 to negative in modern browsers
-        t.scrollBy({left:-dir*t.clientWidth,behavior:'smooth'});
-      });
-    });
+  // photo shows: autoplay every 3.8s while on screen, pause after the visitor touches one
+  document.querySelectorAll('[data-show]').forEach(function(s){
+    var t=s.querySelector('.show-track'),sl=[].slice.call(t.children),n=sl.length,i=0,hold=0,seen=false;
+    var dots=s.querySelector('.dots');
+    if(dots){sl.forEach(function(){dots.appendChild(document.createElement('i'));});}
+    function load(k){var im=sl[(k+n)%n].querySelector('img');if(im&&im.dataset.src){im.src=im.dataset.src;im.removeAttribute('data-src');}}
+    function mark(){if(dots)[].forEach.call(dots.children,function(d,k){d.className=k===i?'on':'';});load(i+1);}
+    function go(k){i=(k+n)%n;load(i);t.scrollTo({left:i*t.clientWidth});mark();}
+    var tm;t.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(function(){var k=Math.round(Math.abs(t.scrollLeft)/t.clientWidth);if(k!==i){i=k;load(i);mark();}},80);});
+    ['pointerdown','touchstart','wheel'].forEach(function(e){t.addEventListener(e,function(){hold=Date.now()+8000;},{passive:true});});
+    s.querySelectorAll('[data-step]').forEach(function(b){b.addEventListener('click',function(){hold=Date.now()+8000;go(i+ +b.getAttribute('data-step'));});});
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){seen=es[0].isIntersecting;if(seen)load(i+1);},{rootMargin:'200px'}).observe(s);}else{seen=true;}
+    mark();
+    setInterval(function(){if(seen&&Date.now()>hold&&!document.hidden)go(i+1);},3800+Math.random()*600);
   });
   var f=document.getElementById('f'),a=document.getElementById('f-send');
   function v(id){return (document.getElementById(id).value||'').trim();}
