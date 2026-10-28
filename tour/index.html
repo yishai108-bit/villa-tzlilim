@@ -154,6 +154,8 @@ body.intro .top, body.intro .cap, body.intro .walk, body.intro .bottom, body.int
 #yard.on { opacity: 1; pointer-events: auto; }
 #yard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; will-change: transform, opacity; }
 #yard img.show { opacity: 1; }
+#yard video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
+#yard video.show { opacity: 1; }
 @keyframes kbA { from { transform: scale(1.04) translateX(3%); } to { transform: scale(1.16) translateX(-3%); } }
 @keyframes kbB { from { transform: scale(1.16) translateX(-3%); } to { transform: scale(1.04) translateX(3%); } }
 #yard img.kA { animation: kbA 7s linear forwards; }
@@ -282,7 +284,7 @@ var WHATSAPP_TEXT = "היי, ראיתי את הסיור בוילת צלילים 
 // Full-size photos (same numbers as img/). On the site the tour sits at /tour/ and the originals at /img/o/.
 var ORIG = "../img/o/";
 // The yard has no video: the tour ends there with these photos, slowly moving, then the end card.
-var YARD = [["85", 15], ["86", 15], ["84", 15], ["87", 16], ["83", 16], ["82", 16]];
+var YARD = [["clip:pergola", 15], ["85", 15], ["86", 15], ["84", 15], ["87", 16], ["83", 16], ["82", 16]];
 
 // Video files: "hi" for tablets and computers, "lo" for phones. Seconds are at normal walking speed.
 var SRC = {"hi": "video/tour-1080.mp4", "lo": "video/tour-720.mp4", "poster": "video/poster.jpg", "thumbs": "video/th/", "img": "img/", "dur": 153.36};
@@ -527,16 +529,16 @@ var SEGS = [
   // yard finale: the photos of the pergola and the garden, slowly moving, then the end card
   var yard = document.getElementById('yard'), endCard = document.getElementById('end');
   var yardIdx = -1, yardOn = false, yardT = null, yardImgs = [];
-  YARD.forEach(function (y, k) { var im = new Image(); im.alt = ''; im.decoding = 'async'; im.dataset.src = SRC.img + y[0] + '.webp'; yard.appendChild(im); yardImgs.push(im); });
-  function yardLoad(k) { var im = yardImgs[k]; if (im && !im.src) { im.src = im.dataset.src; sharpYard(im, YARD[k][0]); } }
+  YARD.forEach(function (y, k) { var im; if (y[0].indexOf('clip:') === 0) { var c = y[0].slice(5); im = document.createElement('video'); im.muted = true; im.loop = true; im.playsInline = true; im.setAttribute('playsinline', ''); im.preload = 'none'; im.poster = 'video/clips/' + c + '.jpg'; im.dataset.src = 'video/clips/' + c + '.mp4'; } else { im = new Image(); im.alt = ''; im.decoding = 'async'; im.dataset.src = SRC.img + y[0] + '.webp'; } yard.appendChild(im); yardImgs.push(im); });
+  function yardLoad(k) { var im = yardImgs[k]; if (im && !im.getAttribute('src')) { im.src = im.dataset.src; if (im.tagName !== 'VIDEO') sharpYard(im, YARD[k][0]); } }
   function sharpYard(im, p) { if (!ORIG) return; var big = new Image(); big.onload = function () { im.src = big.src; }; big.src = ORIG + p + '.jpg'; }
   function yardShow(k) {
     yardIdx = k; yardLoad(k); yardLoad(k + 1);
-    yardImgs.forEach(function (im, j) { if (j !== k) { im.classList.remove('show'); } });
-    var im = yardImgs[k]; im.classList.remove('kA', 'kB'); void im.offsetWidth; im.classList.add('show', k % 2 ? 'kB' : 'kA');
+    yardImgs.forEach(function (im, j) { if (j !== k) { im.classList.remove('show'); if (im.tagName === 'VIDEO') im.pause(); } });
+    var im = yardImgs[k]; if (im.tagName === 'VIDEO') { try { im.currentTime = 0; } catch (x) {} var pp = im.play(); if (pp && pp.catch) pp.catch(function () {}); im.classList.add('show'); } else { im.classList.remove('kA', 'kB'); void im.offsetWidth; im.classList.add('show', k % 2 ? 'kB' : 'kA'); }
     pos = DUR; curSeg = -2; setCaptionRoom(YARD[k][1]);
   }
-  function yardPlay() { if (yardIdx < 0) return; yardOn = true; yard.classList.add('on'); clearTimeout(yardT); yardT = setTimeout(yardStep, reduce ? 4000 : 4600); ui(); }
+  function yardPlay() { if (yardIdx < 0) return; yardOn = true; yard.classList.add('on'); clearTimeout(yardT); yardT = setTimeout(yardStep, yardImgs[yardIdx].tagName === 'VIDEO' ? 5600 : (reduce ? 4000 : 4600)); ui(); }
   function yardPause() { clearTimeout(yardT); yardOn = false; }
   function yardStep() { if (yardIdx + 1 < YARD.length) { yardShow(yardIdx + 1); yardPlay(); } else { yardOn = false; endOn(); } }
   function yardStart(k) { stopWalk(); endOff(); yard.classList.add('on'); yardShow(k); yardPlay(); }
