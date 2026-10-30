@@ -282,7 +282,7 @@ document.documentElement.lang = 'he'; document.documentElement.dir = 'rtl';
 var WHATSAPP_PHONE = "972525257701";
 var WHATSAPP_TEXT = "היי, ראיתי את הסיור בסוויטת צליל ואשמח לפרטים וזמינות";
 // Full-size photos (same numbers as img/). On the site the tour sits at /tour/ and the originals at /img/o/.
-var ORIG = "../../img/o/";
+var ORIG = "../../img/w/";
 // The yard has no video: the tour ends there with these photos, slowly moving, then the end card.
 var YARD = [["clip:suite-balcony", 1], ["63", 3], ["62", 3], ["67", 3], ["64", 3]];
 
@@ -492,7 +492,7 @@ var SEGS = [[0, 0], [4.0, 1], [8.0, 2]];
   function galIndex(k) { galN.textContent = galCount > 1 ? (k + 1) + ' / ' + galCount : '';
     [].forEach.call(strip.querySelectorAll('img'), function (im, j) { if (Math.abs(j - k) < 2 && im.dataset.p) { sharp(im, im.dataset.p); delete im.dataset.p; } }); }
   // swap the light preview for the photographer's full-size file once it has loaded
-  function sharp(img, p) { if (!ORIG) return; img.classList.add('lo'); var big = new Image(); big.decoding = 'async'; big.onload = function () { img.src = big.src; img.classList.remove('lo'); }; big.onerror = function () { img.classList.remove('lo'); }; big.src = ORIG + p + '.jpg'; }
+  function sharp(img, p) { if (!ORIG) return; img.classList.add('lo'); var big = new Image(); big.decoding = 'async'; big.onload = function () { img.src = big.src; img.classList.remove('lo'); }; big.onerror = function () { img.classList.remove('lo'); }; big.src = ORIG + p + '-2400.webp'; }
   function zoom(f, img, p) { var z = f.classList.toggle('z'); strip.style.overflowX = z ? 'hidden' : ''; if (z) { if (img.dataset.p) { sharp(img, p); delete img.dataset.p; } f.scrollLeft = (img.scrollWidth - f.clientWidth) / -2; f.scrollTop = (img.scrollHeight - f.clientHeight) / 2; } }
   var st; strip.addEventListener('scroll', function () { clearTimeout(st); st = setTimeout(function () { galIndex(Math.round(Math.abs(strip.scrollLeft) / strip.clientWidth)); }, 60); }, { passive: true });
   function galStep(d) { var k = Math.round(Math.abs(strip.scrollLeft) / strip.clientWidth) + d; k = Math.max(0, Math.min(galCount - 1, k)); strip.scrollTo({ left: -k * strip.clientWidth, behavior: 'smooth' }); }
@@ -510,7 +510,7 @@ var SEGS = [[0, 0], [4.0, 1], [8.0, 2]];
   var yardIdx = -1, yardOn = false, yardT = null, yardImgs = [];
   YARD.forEach(function (y, k) { var im; if (y[0].indexOf('clip:') === 0) { var c = y[0].slice(5); im = document.createElement('video'); im.muted = true; im.loop = true; im.playsInline = true; im.setAttribute('playsinline', ''); im.preload = 'none'; im.poster = 'video/clips/' + c + '.jpg'; im.dataset.src = 'video/clips/' + c + '.mp4'; } else { im = new Image(); im.alt = ''; im.decoding = 'async'; im.dataset.src = SRC.img + y[0] + '.webp'; } yard.appendChild(im); yardImgs.push(im); });
   function yardLoad(k) { var im = yardImgs[k]; if (im && !im.getAttribute('src')) { im.src = im.dataset.src; if (im.tagName !== 'VIDEO') sharpYard(im, YARD[k][0]); } }
-  function sharpYard(im, p) { if (!ORIG) return; var big = new Image(); big.onload = function () { im.src = big.src; }; big.src = ORIG + p + '.jpg'; }
+  function sharpYard(im, p) { if (!ORIG) return; var big = new Image(); big.onload = function () { im.src = big.src; }; big.src = ORIG + p + '-2400.webp'; }
   function yardShow(k) {
     yardIdx = k; yardLoad(k); yardLoad(k + 1);
     yardImgs.forEach(function (im, j) { if (j !== k) { im.classList.remove('show'); if (im.tagName === 'VIDEO') im.pause(); } });
